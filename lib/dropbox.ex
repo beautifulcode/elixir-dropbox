@@ -231,6 +231,7 @@ defmodule Dropbox do
   end
 
   def delta(client, cursor \\ nil, path_prefix \\ nil, media \\ false) do
+    Dropbox.HTTP.post client "https://api.dropbox.com/1/delta?cursor=#{cursor}&path_prefix=#{path_prefix}&include_media_info=#{media}"
   end
 
   def wait_for_change(client, cursor, timeout \\ 30) do
